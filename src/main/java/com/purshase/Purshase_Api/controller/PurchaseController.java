@@ -2,7 +2,7 @@ package com.purshase.Purshase_Api.controller;
 
 import com.purshase.Purshase_Api.Request.PurshaseDetailRequest;
 import com.purshase.Purshase_Api.response.AppResponse;
-import com.purshase.Purshase_Api.service.PurshaseService;
+import com.purshase.Purshase_Api.service.PurchaseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -10,27 +10,26 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 
 @RestController
-@RequestMapping("/purshase")
-public class PurshaseController {
+@RequestMapping("/purchase")
+public class PurchaseController {
 
     @Autowired
-    private PurshaseService purshaseService;
+    private PurchaseService purchaseService;
 
     @PostMapping
-    public ResponseEntity<?> createPurshase(@RequestBody PurshaseDetailRequest request){
-        purshaseService.savePurshase(request);
+    public ResponseEntity<?> createPurchase(@RequestBody PurshaseDetailRequest request){
+        purchaseService.savePurshase(request);
         Map<String, Object> response=new HashMap<>();
-        response.put("message","Purshase Created Successfully");
+        response.put("purchaseDetails","Purshase Created Successfully");
         return AppResponse.successResponse(HttpStatus.CREATED,response);
     }
 
     @GetMapping
-    public ResponseEntity<?> getAllPurshase(){
+    public ResponseEntity<?> getAllPurchase(){
         Map<String, Object> response=new HashMap<>();
-        response.put("message",purshaseService.getPurchaseDetail());
+        response.put("message",purchaseService.getPurchaseDetail());
         return AppResponse.successResponse(HttpStatus.OK,response);
     }
 }
