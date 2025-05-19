@@ -19,7 +19,7 @@ public class PurshaseDetail {
     private String customerName;
     private String mobileNumber;
     private String location;
-    private int description;
+    private string description;
     private LocalDate date;
     private List<String> products;
     @CreatedDate
