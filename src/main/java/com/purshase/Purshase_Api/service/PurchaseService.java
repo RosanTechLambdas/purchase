@@ -9,5 +9,5 @@ import java.util.List;
 public interface PurchaseService {
     void savePurshase(PurshaseDetailRequest request);
 
-    Page<PurshaseDetailResponse> getPurchaseDetail();
+    Page<PurshaseDetailResponse> getPurchaseDetail(String keyword);
 }

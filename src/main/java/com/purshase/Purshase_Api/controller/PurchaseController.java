@@ -1,11 +1,14 @@
 package com.purshase.Purshase_Api.controller;
 
 import com.purshase.Purshase_Api.Request.PurshaseDetailRequest;
+import com.purshase.Purshase_Api.model.UserPrincipal;
 import com.purshase.Purshase_Api.response.AppResponse;
 import com.purshase.Purshase_Api.service.PurchaseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
@@ -27,9 +30,9 @@ public class PurchaseController {
     }
 
     @GetMapping
-    public ResponseEntity<?> getAllPurchase(){
+    public ResponseEntity<?> getAllPurchase(String keyword){
         Map<String, Object> response=new HashMap<>();
-        response.put("message",purchaseService.getPurchaseDetail());
+        response.put("message",purchaseService.getPurchaseDetail(keyword));
         return AppResponse.successResponse(HttpStatus.OK,response);
     }
 }

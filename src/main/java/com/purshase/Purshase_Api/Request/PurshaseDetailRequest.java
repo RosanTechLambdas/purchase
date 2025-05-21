@@ -10,7 +10,7 @@ public class PurshaseDetailRequest {
     private String customerName;
     private String mobileNumber;
     private String location;
-    private int description;
+    private String description;
     private LocalDate date;
     private List<String> products;
 }

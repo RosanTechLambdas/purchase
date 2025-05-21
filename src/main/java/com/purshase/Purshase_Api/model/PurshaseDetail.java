@@ -10,7 +10,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 @Data
-@Document(collection = "purshases")
+@Document(collection = "purchaseDetail")
 public class PurshaseDetail {
     @Id
     private String id;
