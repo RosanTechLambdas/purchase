@@ -13,8 +13,13 @@ import java.util.Optional;
 public class GetCurrentUser {
 
     public static String getCurrentUserId() {
-        UserPrincipal userPrincipal = (UserPrincipal) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        String userId = userPrincipal.getUserId();
-         return userId;
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+        if (principal instanceof UserPrincipal) {
+            System.out.println(((UserPrincipal) principal));
+            return ((UserPrincipal) principal).getUserId();
+        } else {
+            return null;
+        }
     }
 }

@@ -24,6 +24,7 @@ public class PurchaseController {
     @PostMapping
     public ResponseEntity<?> createPurchase(@RequestBody PurshaseDetailRequest request){
         purchaseService.savePurshase(request);
+        System.out.println("request come");
         Map<String, Object> response=new HashMap<>();
         response.put("purchaseDetails","Purshase Created Successfully");
         return AppResponse.successResponse(HttpStatus.CREATED,response);
